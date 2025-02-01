@@ -88,7 +88,6 @@ bool isWinner(int horseNum, int* racers){
 	
 	// otherwise, if the horse is at the end of the track, print the winning horse and return true.
 	else{
-		int winner = horseNum;
 		std::cout << "HORSE " << horseNum <<" IS THE WINNER!" << std::endl;
 		return true;
 	} // end else
