@@ -10,8 +10,8 @@
 
 
 // constants and functions used in entire program
-const int TRACKLENGTH = 15
-const int MAXHORSES = 5
+const int TRACKLENGTH = 15;
+const int MAXHORSES = 5;
 
 // horseNum is used to identify which of the 5 horses in the array we are currently referring to
 void advance(int horseNum, int* racers);
@@ -41,13 +41,9 @@ int main(){
 			if (isWinner(i, racers)){
 				gameRunning = false;
 			} // end if
-	
 		} // end for
-
 	} // end while	
-
 	return 0;
-
 } // end main
 
 void advance(int horseNum, int* racers){
@@ -70,35 +66,28 @@ void advance(int horseNum, int* racers){
 
 void printLane(int horseNum, int* racers){
 
-/*	char track[16];
-	for (int i = 0; i < TRACKLENGTH; i++){
-		track[i] = ".";
-		std::cout<<track<<" ";
 
-	} // end for
-*/
- 	char track[] = "--------------";
+ 	char track[] = "...............";
    	 for (int i = 0; i < TRACKLENGTH; i++){
-   	    	 track[i] = '-';
+   	    	 track[i] = '.';
         } // end for
   
-       	 track[horses[horseNum]] = '0' + horseNum;
+       	 track[racers[horseNum]] = '0' + horseNum;
    	 std::cout << track << std::endl;
 } // end printLane
 
 bool isWinner(int horseNum, int* racers){
 	
 	// if horse is not at the end of track, return false and move on.
-	if(racers[horseNum] < TRACKLENGTH){
+	if(racers[horseNum] < TRACKLENGTH - 1){
 		return false;
 	} // end if
 	
 	// otherwise, if the horse is at the end of the track, print the winning horse and return true.
 	else{
-		int winner = horseNum;
+	//	int winner = horseNum;
 		std::cout << "HORSE " << horseNum <<" IS THE WINNER!" << std::endl;
 		return true;
 	} // end else
 
 } // end isWinner
-
