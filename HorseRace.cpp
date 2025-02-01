@@ -33,9 +33,10 @@ int main(){
         std::cin.get();
 
 		// when input is gotten back from user, run advance and printLane functions for every horse.
+		// print needs to be before advance, or it will give some of the horses a head-start.
 		for (int i = 0; i < MAXHORSES; i++){
-			advance(i, racers);
 			printLane(i, racers);
+			advance(i, racers);
 		
 			// if isWinner returns true, set game running to false.
 			if (isWinner(i, racers)){
@@ -43,7 +44,9 @@ int main(){
 			} // end if
 		} // end for
 	} // end while	
+
 	return 0;
+
 } // end main
 
 void advance(int horseNum, int* racers){
@@ -61,19 +64,19 @@ void advance(int horseNum, int* racers){
 	// assigns the value of the horse equal to either value + 0, or value + 1
 	// if the coin rolls a 0, it effectively does nothing, and the horse stays where it is.
 	racers[horseNum] += coin;
-
 } // end advance
 
 void printLane(int horseNum, int* racers){
-
-
- 	char track[] = "...............";
-   	 for (int i = 0; i < TRACKLENGTH; i++){
-   	    	 track[i] = '.';
+	
+	// create the track, and set the character type to periods
+	char track[] = "...............";
+	for (int i = 0; i < TRACKLENGTH; i++){
+		track[i] = '.';
         } // end for
-  
-       	 track[racers[horseNum]] = '0' + horseNum;
-   	 std::cout << track << std::endl;
+   	
+	//print the horse at it's position in the track, dictated by the horse's value
+	track[racers[horseNum]] = '0' + horseNum;
+    	std::cout << track << std::endl;
 } // end printLane
 
 bool isWinner(int horseNum, int* racers){
@@ -85,7 +88,7 @@ bool isWinner(int horseNum, int* racers){
 	
 	// otherwise, if the horse is at the end of the track, print the winning horse and return true.
 	else{
-	//	int winner = horseNum;
+		int winner = horseNum;
 		std::cout << "HORSE " << horseNum <<" IS THE WINNER!" << std::endl;
 		return true;
 	} // end else
